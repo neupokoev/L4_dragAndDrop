@@ -1,9 +1,14 @@
 import com.codeborne.selenide.WebDriverRunner;
+import lombok.extern.log4j.Log4j;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.time.LocalDateTime;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.DragAndDropOptions.usingActions;
@@ -11,7 +16,19 @@ import static com.codeborne.selenide.DragAndDropOptions.usingJavaScript;
 import static com.codeborne.selenide.Selenide.*;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
+@Log4j
 public class DragAndDropTests {
+
+    @BeforeEach
+    void setup() {
+        log.info("Start test " + LocalDateTime.now());
+    }
+
+    @AfterEach
+    void tears() {
+        log.info("End of test " + LocalDateTime.now());
+    }
+
     @Test
     void dragAndDropSelenideTest() {
         // open page
